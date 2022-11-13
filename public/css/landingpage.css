@@ -1,0 +1,34 @@
+.card{
+    margin-left: 20;
+}
+
+.testimoni{
+    margin-bottom: 3%;
+}
+
+.backg{
+    background-color:#cccccc ;
+    width: auto;
+    padding-bottom: 1%;
+    
+}
+
+.containers{
+    background-color: #cccccc;
+    margin: 1px auto;
+    width: 800px;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.company{
+    flex-grow: 1;
+}
+.social{
+    flex-grow: 1;
+}
