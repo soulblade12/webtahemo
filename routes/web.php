@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\fetch_data_mqtt;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::post('/logout',[LoginController::class, 'logout']);
 
 Route::get('/Register',[RegisterController::class, 'index'])->middleware('guest');
 Route::post('/Register',[RegisterController::class, 'store']);
+
+Route::post('/MQTTdata', [fetch_data_mqtt::class,'getData']);
 
 
 

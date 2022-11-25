@@ -118,12 +118,16 @@ input[type=button] {
   margin: 4px 2px;
   cursor: pointer;
 }
+
 input[type=text]:focus {
   background-color: lightblue;
 }
+
 input[type=button]:hover {
   background-color: #686868;
 }
+
+
 
 #messages {
   margin-top: 12px;

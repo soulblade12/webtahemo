@@ -25,16 +25,18 @@ function startConnect() {
         userName : 'admin-user',
 	    password : 'admin-password'
     });
+    
+    storedata(onMessageArrived);
+    
+ 
 }
 
 // Called when the client connects
 function onConnect() {
     // Fetch the MQTT topic from the form
     topic = document.getElementById("topic").value;
-
     // Print output for the user in the messages div
     document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
-
     // Subscribe to the requested topic
     client.subscribe(topic);
 }
@@ -47,11 +49,37 @@ function onConnectionLost(responseObject) {
     }
 }
 
+
 // Called when a message arrives
 function onMessageArrived(message) {
-    console.log("onMessageArrived: " + message.payloadString);
-    document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+    var nama_sens = document.getElementById("nama").value;
+    // var nama_sensor = JSON.stringify(nama_sens);
+    //console.log("onMessageArrived: " + message.payloadString);  
+    var simpan = JSON.parse(message.payloadString);
+    // var simpan = JSON.parse($("#productDiv").html());
+    document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + simpan[nama_sens] + '</span><br/>';
+    // document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+    
+    // storedata(message.payloadString);
+    return message.payloadString;
 }
+
+function storedata(data){
+    //AJAX
+    var xhr = new XMLHttpRequest();
+    var csrfToken = xhr.getResponseHeader('x-csrf-token');
+    console.log(csrfToken);
+    xhr.open('POST','http://127.0.0.1:8000/MQTTdata', true);
+    xhr.setRequestHeader('x-csrf-token', csrfToken);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        }   
+    xhr.send(data);
+}
+
 
 // Called when the disconnection button is pressed
 function startDisconnect() {

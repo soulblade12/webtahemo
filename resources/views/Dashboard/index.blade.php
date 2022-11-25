@@ -10,6 +10,7 @@
     <title>Dashboard Template · Bootstrap v5.2</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -152,11 +153,13 @@
   <h1>mqtt-websocket</h1></div>
   <form id="connection-information-form">
      <b>Hostname or IP Address:</b> 
-     <input id="host" type="text" name="host" value="test.mosquitto.org"><br>
+     <input id="host" type="text" name="host" value="broker.hivemq.com"><br>
      <b>Port:</b>
-     <input id="port" type="text" name="port" value="8080"><br>
+     <input id="port" type="text" name="port" value="8000"><br>
      <b>Topic:</b>
-     <input id="topic" type="text" name="topic" value="#"><br><br>
+     <input id="topic" type="text" name="topic" value="#"><br>
+     <b>nama Sensor:</b>
+     <input id="nama" type="text" name="nama" value="sensor1"><br><br>
      <input type="button" onclick="startConnect()" value="Connect">
      <input type="button" onclick="startDisconnect()" value="Disconnect">
   </form>
