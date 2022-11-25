@@ -152,6 +152,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1>mqtt-websocket</h1></div>
   <form id="connection-information-form">
+    @csrf
      <b>Hostname or IP Address:</b> 
      <input id="host" type="text" name="host" value="broker.hivemq.com"><br>
      <b>Port:</b>

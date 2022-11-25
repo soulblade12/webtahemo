@@ -68,16 +68,24 @@ function storedata(data){
     //AJAX
     var xhr = new XMLHttpRequest();
     var csrfToken = xhr.getResponseHeader('x-csrf-token');
-    console.log(csrfToken);
+    
     xhr.open('POST','http://127.0.0.1:8000/MQTTdata', true);
+    // xhr.withCredentials = true;
+    // xhr.setRequestHeader("x-csrf-token", "fetch");    
+    // xhr.setRequestHeader("Accept", "application/json");
+    // xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    // xhr.send(null);
+    
     xhr.setRequestHeader('x-csrf-token', csrfToken);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 alert(xhr.responseText);
-            }
-        }   
-    xhr.send(data);
+                xhr.send(JSON.stringify(data)); 
+                console.log(xhr.responseText);
+        } 
+        else (console.log("belum terkirim"))
+     }
 }
 
 
